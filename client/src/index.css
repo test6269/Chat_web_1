@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(0, 0%, 18%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215, 16%, 47%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(0, 0%, 18%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(0, 0%, 18%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --primary: hsl(142, 76%, 36%);
+  --primary-foreground: hsl(138, 100%, 99%);
+  --secondary: hsl(210, 40%, 96%);
+  --secondary-foreground: hsl(222, 84%, 5%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(222, 84%, 5%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(60, 9%, 98%);
+  --ring: hsl(142, 76%, 36%);
+  --radius: 0.5rem;
+  
+  /* WhatsApp specific colors */
+  --whatsapp-primary: hsl(142, 76%, 36%);
+  --whatsapp-dark: hsl(174, 84%, 25%);
+  --whatsapp-bg: hsl(210, 20%, 95%);
+  --whatsapp-bubble: hsl(83, 52%, 85%);
+  --whatsapp-text: hsl(0, 0%, 19%);
+  --whatsapp-error: hsl(0, 84%, 60%);
+  --whatsapp-success: hsl(142, 76%, 36%);
+}
+
+.dark {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 33%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --popover: hsl(222, 84%, 5%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --card: hsl(222, 84%, 5%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 33%, 17%);
+  --input: hsl(217, 33%, 17%);
+  --primary: hsl(142, 76%, 36%);
+  --primary-foreground: hsl(138, 100%, 99%);
+  --secondary: hsl(217, 33%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(217, 33%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(142, 76%, 36%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Roboto', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .whatsapp-gradient {
+    background: linear-gradient(135deg, var(--whatsapp-primary) 0%, var(--whatsapp-dark) 100%);
+  }
+  
+  .message-bubble-sent {
+    background-color: var(--whatsapp-bubble);
+    color: var(--whatsapp-text);
+  }
+  
+  .message-bubble-received {
+    background-color: hsl(0, 0%, 100%);
+    color: var(--whatsapp-text);
+  }
+  
+  .chat-bg-pattern {
+    background-image: radial-gradient(circle at 50% 50%, hsl(174, 84%, 25%) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.03;
+  }
+}
