@@ -30,8 +30,8 @@ function AppContent() {
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <Switch>
-        <Route path="/" component={() => user ? <Chat /> : <Login setUser={setUser} />} />
-        <Route path="/chat" component={() => user ? <Chat /> : <Login setUser={setUser} />} />
+        <Route path="/" component={() => user ? <Chat user={user} setUser={setUser} /> : <Login setUser={setUser} />} />
+        <Route path="/chat" component={() => user ? <Chat user={user} setUser={setUser} /> : <Login setUser={setUser} />} />
         <Route path="/login" component={() => <Login setUser={setUser} />} />
         <Route component={NotFound} />
       </Switch>

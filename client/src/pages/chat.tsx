@@ -3,7 +3,6 @@ import { useLocation } from "wouter";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { useAuth } from "@/App";
 import { apiRequest } from "@/lib/queryClient";
 import { MessageBubble } from "@/components/message-bubble";
 import { TypingIndicator } from "@/components/typing-indicator";
@@ -15,11 +14,15 @@ import {
   Smile, 
   Send 
 } from "lucide-react";
-import type { Message } from "@shared/schema";
+import type { Message, User } from "@shared/schema";
 
-export default function Chat() {
+interface ChatProps {
+  user: User;
+  setUser: (user: User | null) => void;
+}
+
+export default function Chat({ user, setUser }: ChatProps) {
   const [, setLocation] = useLocation();
-  const { user, setUser } = useAuth();
   const queryClient = useQueryClient();
   const [message, setMessage] = useState("");
   const [lastFetchTime, setLastFetchTime] = useState<Date>(new Date());
@@ -101,11 +104,6 @@ export default function Chat() {
   const handleLogout = () => {
     logoutMutation.mutate();
   };
-
-  if (!user) {
-    setLocation("/login");
-    return null;
-  }
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--whatsapp-bg)]">
